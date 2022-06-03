@@ -1,0 +1,3 @@
+{
+  [require("prettier-plugin-tailwindcss")];
+}
