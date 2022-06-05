@@ -10,35 +10,39 @@ export default function Home() {
   let direction = count > prev ? 1 : -1;
 
   return (
-    <div className="text-white">
-      <div className="mt-4 flex justify-between px-4">
-        <button onClick={() => setCount(count - 1)}>
-          <Icons.ChevronLeftIcon className="h-5 w-5" />
-        </button>
-        <button onClick={() => setCount(count + 1)}>
-          <Icons.ChevronRightIcon className="h-5 w-5" />
-        </button>
-      </div>
-      <div className="mt-8 flex justify-center">
-        <div
-          ref={ref}
-          className="relative flex h-24 w-1/2 items-center justify-center overflow-hidden bg-gray-700"
-        >
-          <AnimatePresence custom={{ direction, width }}>
-            <motion.div
-              key={count}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              custom={{ direction, width }}
-              className={`absolute flex h-20 w-20 items-center justify-center ${
-                colors[Math.abs(count) % 4]
-              }`}
+    <div className="flex justify-center">
+      <div className="mt-12 w-full max-w-lg text-white">
+        <div className="flex justify-between px-4">
+          <button onClick={() => setCount(count - 1)}>
+            <Icons.ChevronLeftIcon className="h-10 w-10" />
+          </button>
+          <button onClick={() => setCount(count + 1)}>
+            <Icons.ChevronRightIcon className="h-10 w-10" />
+          </button>
+        </div>
+        <div className="mt-8 flex justify-center">
+          <div className="aspect-square w-2/5">
+            <div
+              ref={ref}
+              className="relative flex h-full items-center justify-center overflow-hidden bg-gray-700"
             >
-              {count}
-            </motion.div>
-          </AnimatePresence>
+              <AnimatePresence custom={{ direction, width }}>
+                <motion.div
+                  key={count}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  custom={{ direction, width }}
+                  className={`absolute flex h-2/3 w-2/3 items-center justify-center text-3xl font-bold ${
+                    colors[Math.abs(count) % 4]
+                  }`}
+                >
+                  {count}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </div>
     </div>
